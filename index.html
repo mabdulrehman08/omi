@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyLifeManga | 3D Book Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Garamond&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-white overflow-hidden h-screen flex items-center justify-center">
+  <!-- Loading screen -->
+  <div id="loading-screen" class="fixed inset-0 z-50 bg-gray-900 flex items-center justify-center">
+    <div class="text-center">
+      <div class="w-16 h-16 border-4 border-t-blue-500 border-blue-200 rounded-full animate-spin mx-auto mb-4"></div>
+      <p class="text-xl">Loading your story...</p>
+    </div>
+  </div>
+
+  <!-- Main container -->
+  <div class="container mx-auto relative">
+    <!-- Three.js canvas container -->
+    <div id="book-container" class="w-full h-screen absolute inset-0"></div>
+    
+    <!-- UI Overlay -->
+    <div class="relative z-10 pointer-events-none">
+      <!-- Header -->
+      <header class="absolute top-0 left-0 w-full p-4 pointer-events-auto">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-cinzel text-gold">MyLifeManga</h1>
+          <nav class="hidden md:block">
+            <ul class="flex space-x-6">
+              <li><a href="#" class="hover:text-blue-400 transition">Home</a></li>
+              <li><a href="#" class="hover:text-blue-400 transition">Library</a></li>
+              <li><a href="#" class="hover:text-blue-400 transition">About</a></li>
+            </ul>
+          </nav>
+          <button class="md:hidden text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </header>
+      
+      <!-- Book navigation -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4 pointer-events-auto">
+        <button id="prev-page" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg flex items-center transition">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Previous
+        </button>
+        <button id="next-page" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg flex items-center transition">
+          Next
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Login form (appears on specific page) -->
+      <div id="login-panel" class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none">
+        <div class="bg-opacity-90 bg-white text-gray-800 p-8 rounded-lg shadow-xl max-w-md w-full pointer-events-auto">
+          <h2 class="text-2xl font-cinzel text-center mb-6">Enter Your Story</h2>
+          <form>
+            <div class="mb-4">
+              <label for="username" class="block text-gray-700 mb-2">Username</label>
+              <input type="text" id="username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-6">
+              <label for="password" class="block text-gray-700 mb-2">Password</label>
+              <input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="flex justify-between items-center mb-4">
+              <a href="#" class="text-sm text-blue-600 hover:underline">Forgot password?</a>
+              <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Begin</button>
+            </div>
+            <p class="text-center text-sm text-gray-600">
+              New to the story? <a href="#" class="text-blue-600 hover:underline">Create an account</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sound effects (hidden) -->
+  <audio id="page-turn-sound" preload="auto">
+    <source src="sounds/page-turn.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="tailwind.config.js"></script>
+  <script src="book.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
