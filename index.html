@@ -1,38 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>3D Book with Sound</title>
+    <title>Personal Manga Book</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="book-container">
-        <div class="book">
+        <div class="book" id="book">
             <!-- Front Cover -->
             <div class="book-cover front-cover">
-                <h1>My 3D Book</h1>
+                <div class="cover-content">
+                    <div class="manga-title">
+                        <h1>Welcome to your personal manga</h1>
+                    </div>
+                    <div class="manga-art">
+                        <div class="character character-1"></div>
+                        <div class="character character-2"></div>
+                    </div>
+                    <div class="google-btn-container">
+                        <button class="google-btn">
+                            <div class="google-icon-wrapper">
+                                <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo"/>
+                            </div>
+                            <span class="btn-text">Sign up with Google</span>
+                        </button>
+                    </div>
+                </div>
             </div>
             
-            <!-- Pages (add more as needed) -->
+            <!-- Pages -->
             <div class="page" id="page1">
                 <div class="content">
-                    <h2>Chapter 1</h2>
-                    <p>Your content here...</p>
+                    <div class="manga-panel panel-1">
+                        <h2>Your Story Begins</h2>
+                    </div>
+                    <div class="manga-panel panel-2"></div>
+                    <div class="manga-panel panel-3"></div>
                 </div>
             </div>
             <div class="page" id="page2">
                 <div class="content">
-                    <h2>Chapter 2</h2>
-                    <p>More content here...</p>
+                    <div class="manga-panel panel-4"></div>
+                    <div class="manga-panel panel-5"></div>
+                    <div class="speech-bubble">
+                        <p>Adventure awaits!</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Back Cover -->
-            <div class="book-cover back-cover"></div>
+            <div class="book-cover back-cover">
+                <div class="logo">マンガ</div>
+            </div>
         </div>
         
         <div class="controls">
-            <button id="prev">Previous</button>
-            <button id="next">Next</button>
+            <button id="prev" class="manga-btn"><i class="fas fa-chevron-left"></i> Previous</button>
+            <button id="next" class="manga-btn">Next <i class="fas fa-chevron-right"></i></button>
+            <button id="close" class="manga-btn">Close Book</button>
         </div>
     </div>
     
